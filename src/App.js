@@ -1,15 +1,14 @@
 
-import './App.css';
-import Sidebar from './Component/Sidebar';
-import Ordersummary from './Component/Ordersumary';
-import UserOperation from './Component/UserOperation';
+
+import Home from './Home';
+import { BrowserRouter,Route,Switch} from 'react-router-dom';
 function App() {
   return (
-    <div className="App" >
-      <Sidebar/>
-      <Ordersummary/>
-      <UserOperation/>
-    </div>
+   <BrowserRouter>
+    <Switch>
+    <Route path='/' component={Home} exact />
+        </Switch>
+   </BrowserRouter>
   );
 }
 

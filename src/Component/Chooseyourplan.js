@@ -87,10 +87,11 @@ function Chooseyourplan() {
        <div>
 
        </div>
-       </div>
        <button style={{width:'30%',height:40,borderRadius:20,border:'1px solid #BF1559',color:'#BF1559',fontWeight:'600',marginTop:30,background:'#fff'}}>
                            Continue
        </button>
+       </div>
+       
         </div>
     )
 }

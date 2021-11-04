@@ -2,7 +2,7 @@ import mayowa_wyd1 from '../Asset/Image/mayowa_wyd1.jpg';
 import mayow_wyd3 from '../Asset/Image/mayow_wyd3.jpg';
 import {useState,useRef} from 'react';
 import DatePicker from 'react-date-picker';
-
+import '../style/whatyoudo.css';
 import {FaCalendar,FaArrowDown} from 'react-icons/fa'
 function Whatyoudo() {
     const wyd=[{
@@ -29,6 +29,7 @@ const [selectedDate,setSelectedDate]=useState(null);
         setStartDate(e);
         setSelectedDate(e);
       };
+      const [existingLoan,setExistingLoan]=useState(false);
       const calendarRef=useRef(null);
       const handleClick = (e) => {
         e.preventDefault();
@@ -71,10 +72,10 @@ const [selectedDate,setSelectedDate]=useState(null);
                 <h4 style={{color:'#BF1559',margin:0,textAlign:'left',fontWeight:'500'}}>Do you have any existing loan(s)?</h4>
                 <div style={{border:'1px solid #fff',height:40,flexDirection:'row',display:'flex',boxShadow:" 0 0 10px #ccc",width:'93%',justifyContent:'space-around',marginTop:10}}>
                  <div style={{ width:'42%' ,display:'flex',flexDirection:'row',justifyContent:'center'}}>
-                     <input type="radio" id="todo"  onChange={(e)=>console.log(e)} style={{border:'1px solid #BF1559',borderRadius:20,width:20,height:20,marginRight:5,alignSelf:'center'}}/><h5 style={{margin:0,alignSelf:'center'}}>Yes</h5></div>
+                     <input type="radio"   onChange={(e)=>console.log("Clicked")} className="radio" /><h5 style={{margin:0,alignSelf:'center'}}>Yes</h5></div>
                       <hr />
                      <div  style={{ width:'42%',display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'left'}}>
-                     <input type="radio"  id="todo" color="red"  onChange={(e)=>console.log(e)} style={{border:'1px solid #BF1559',color:'#BF1559',borderRadius:20,width:20,height:20,alignSelf:'center',marginRight:5}}/><h5 style={{margin:0,alignSelf:'center'}}>No</h5></div>
+                     <input type="radio"  className="radio" onChange={(e)=>console.log(e)} /><h5 style={{margin:0,alignSelf:'center'}}>No</h5></div>
                  </div>
                    </div>
                    <div>
