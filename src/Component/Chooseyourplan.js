@@ -1,4 +1,5 @@
-function Chooseyourplan() {
+
+function Chooseyourplan({changeScreen,setStep}) {
     const card=[
         {
           name:'Argenttina',
@@ -34,6 +35,7 @@ function Chooseyourplan() {
 
      const name1=["Shopping credit","Down payment","Monthly Installment","Tenure"];
      const name2=["45,000","21,000","25,000"];
+    
     return (
         <div style={{margin:5}}>
             <div>
@@ -80,15 +82,21 @@ function Chooseyourplan() {
             })}
               <h5 style={{color:'#BF1559',textAlign:'left',fontWeight:'bold'}}>1 Month</h5>
         </div>
-        <div style={{ height:'100%',width:'50%',borderRadius:8,backgroundImage:' linear-gradient(to top right, #720057, #DF015E)',boxShadow:" 0 0 20px #ccc"}}>
-          
+        <div style={{height:'100%',width:'50%',borderRadius:8,backgroundImage:' linear-gradient(to top right, #720057, #DF015E)',boxShadow:" 0 0 20px #ccc",display:'flex',flexDirection:'column',justifyContent:'center'}}>
+          <h4 style={{color:'#fff'}}>Customize<br/>Down Payment</h4>
+          <div style={{marginTop:20,display:'flex',flexDirection:'row',height:40,margin:'0 auto',justifyContent:'center'}}>
+                    <div style={{width:'12%',alignSelf:'center',color:'#fff',backgroundColor:'#fff',height:'100%',marginRight:2,justifyContent:'center',display:'flex'}}><h5 style={{alignSelf:'center',color:'#BF1559',fontSize:25}}>{'\u20A6'}</h5></div><input type="text" id="todo"  onChange={(e)=>console.log(e)} style={{width:'60%',boxShadow:" 0 0 10px #ccc",border:'1px solid #fff',borderRadius:2,color:'#BF1559',outline:'none',fontSize:25,fontWeight:'bold'}}/>
+                </div>
+        <button  style={{margin:'0 auto',width:'72%',height:40,borderRadius:20,border:'1px solid #fff',color:'#fff',fontWeight:'600',marginTop:30,background:'transparent'}}>
+              Continue
+       </button>
         </div>
        </div>
        <div>
 
        </div>
-       <button style={{width:'30%',height:40,borderRadius:20,border:'1px solid #BF1559',color:'#BF1559',fontWeight:'600',marginTop:30,background:'#fff'}}>
-                           Continue
+       <button onClick={changeScreen} style={{width:'30%',height:40,borderRadius:20,border:'1px solid #BF1559',color:'#BF1559',fontWeight:'600',marginTop:30,background:'#fff'}}>
+              Continue
        </button>
        </div>
        
