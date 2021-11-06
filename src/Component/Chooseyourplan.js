@@ -1,11 +1,19 @@
 
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
+import {EmployeeContext} from '../DataProvider/Employee';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import axios from 'axios';
 function Chooseyourplan({changeScreen,setStep}) {
+    const{employee}=useContext(EmployeeContext)
     const [appDetails,setAppDetails]=useState({
         month:'',
-        userMonthlyPay:'21000',
+        userMonthlyPay:'0',
         downPayment:'',
+        load:false,
+        shoppingCredit:'0'
     })
+    console.log(employee);
     const card=[
         {
           name:'Argenttina',
@@ -40,8 +48,52 @@ function Chooseyourplan({changeScreen,setStep}) {
     ]
 
      const name1=["Shopping credit","Down payment","Monthly Installment","Tenure"];
-     const name2=["45,000","21,000",appDetails.userMonthlyPay];
-    
+     const name2=[appDetails.shoppingCredit,appDetails.downPayment,appDetails.userMonthlyPay];
+
+      const inputCheck=()=>{
+          var check=true;
+          var inputObject={};
+       if(!appDetails.month){
+           check=false;
+       }
+
+       if(!appDetails.downPayment){
+           check=false;
+       }
+       console.log(check);
+       return check;
+
+      }
+       const makeRequest=()=>{
+           //url https://payqart.compound.ng/api/application/calculate
+           if(inputCheck()){
+               setAppDetails({...appDetails,load:true})
+               console.log(appDetails.month,employee.employementType,appDetails.downPayment,employee.averageMonthRevanue,employee.day);
+           axios({
+               
+              method:'post',
+              url:' https://payqart.compound.ng/api/application/calculate',
+              data:{
+                requestedAmount : 150000,
+                tenor :Number.parseInt(appDetails.month),
+                employmentType:Number.parseInt(employee.employementType),
+                userMonthlyPay :Number.parseInt(appDetails.downPayment), 
+                averageMonthlyRevenue :Number.parseInt(employee.averageMonthRevanue), 
+                averageMonthlyExpense : null,
+                currentMonthlyLoan : 0,
+                userSalaryDate :Number.parseInt(employee.day)
+              }
+
+           }).then(function(response){
+             console.log(response.data)
+             setAppDetails({...appDetails,load:false,shoppingCredit:response.data['Approved Shopping Credit'],userMonthlyPay:response.data['Monthly Repayment']})
+             
+           }).catch(function (error){
+              console.log(error);
+              setAppDetails({...appDetails,load:false})
+           })
+           }
+       }
     return (
         <div style={{margin:5}}>
             <div>
@@ -74,6 +126,9 @@ function Chooseyourplan({changeScreen,setStep}) {
             })}
             
         </div>
+      {appDetails.load&&<Box sx={{ display: 'flex' }}>
+      <CircularProgress  />
+    </Box>}
         <div style={{width:'25%'}}>
             {name2.map((e,i)=>{
                 return(
@@ -85,7 +140,7 @@ function Chooseyourplan({changeScreen,setStep}) {
         <div style={{height:'100%',width:'50%',borderRadius:8,backgroundImage:' linear-gradient(to top right, #720057, #DF015E)',boxShadow:" 0 0 20px #ccc",display:'flex',flexDirection:'column',justifyContent:'center'}}>
           <h4 style={{color:'#fff'}}>Customize<br/>Down Payment</h4>
           <div style={{marginTop:20,display:'flex',flexDirection:'row',height:40,margin:'0 auto',justifyContent:'center'}}>
-                    <div style={{width:'12%',alignSelf:'center',color:'#fff',backgroundColor:'#fff',height:'100%',marginRight:2,justifyContent:'center',display:'flex'}}><h5 style={{alignSelf:'center',color:'#BF1559',fontSize:25}}>{'\u20A6'}</h5></div><input type="text"  value={appDetails.downPayment?appDetails.downPayment:appDetails.userMonthlyPay} onChange={(e)=>setAppDetails({...appDetails,downPayment:e.target.value})} style={{width:'60%',boxShadow:" 0 0 10px #ccc",border:'1px solid #fff',borderRadius:2,color:'#BF1559',outline:'none',fontSize:25,fontWeight:'bold'}}/>
+                    <div style={{width:'12%',alignSelf:'center',color:'#fff',backgroundColor:'#fff',height:'100%',marginRight:2,justifyContent:'center',display:'flex'}}><h5 style={{alignSelf:'center',color:'#BF1559',fontSize:25}}>{'\u20A6'}</h5></div><input type="text"  value={appDetails.downPayment&appDetails.downPayment} onChange={(e)=>setAppDetails({...appDetails,downPayment:e.target.value})} style={{width:'60%',boxShadow:" 0 0 10px #ccc",border:'1px solid #fff',borderRadius:2,color:'#BF1559',outline:'none',fontSize:25,fontWeight:'bold'}}/>
                 </div>
         <button  style={{margin:'0 auto',width:'72%',height:40,borderRadius:20,border:'1px solid #fff',color:'#fff',fontWeight:'600',marginTop:30,background:'transparent'}}>
               Continue
@@ -95,7 +150,7 @@ function Chooseyourplan({changeScreen,setStep}) {
        <div>
 
        </div>
-       <button  style={{width:'30%',height:40,borderRadius:20,border:'1px solid #BF1559',color:'#BF1559',fontWeight:'600',marginTop:30,background:'#fff'}}>
+       <button  onClick={()=>makeRequest()} style={{width:'30%',height:40,borderRadius:20,border:'1px solid #BF1559',color:'#BF1559',fontWeight:'600',marginTop:30,background:'#fff'}}>
               Continue
        </button>
        </div>

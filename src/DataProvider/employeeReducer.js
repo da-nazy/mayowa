@@ -12,4 +12,4 @@ export const employeeReducer=(state,action)=>{
                 {...state,averageMonthlyRevenue:action.averageMonthlyRevanue}
             )
     }
-}
+}   
