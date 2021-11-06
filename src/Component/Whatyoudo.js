@@ -38,7 +38,7 @@ const [selectedDate,setSelectedDate]=useState(null);
         setSelectedDate(e);
       };
       useEffect(()=>{
-          console.log(employee);
+      //    console.log(employee);
       },[employee])
       const [existingLoan,setExistingLoan]=useState(false);
       const [noLoan,setNoLoan]=useState(false);
@@ -66,7 +66,7 @@ const [selectedDate,setSelectedDate]=useState(null);
                var myobject=inputCheck();
          //  console.log(myobject,"danny");
            dispatch({type:'ADD_EMPLOYE',day:myobject.day,employementType:myobject.employementType,averageMonthRevanue:myobject.averageMonthRevanue});
-          // console.log(employee);
+           console.log(employee);
            }
          }
         
