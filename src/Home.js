@@ -2,13 +2,16 @@ import './App.css';
 import Sidebar from "./Component/Sidebar";
 import Ordersumary from "./Component/Ordersumary";
 import UserOperation from "./Component/UserOperation";
+import EmployeContextProvider from './DataProvider/Employee';
 function Home() {
     return (
-        <div className="App">
+       <EmployeContextProvider>
+          <div className="App">
         <Sidebar/>
       <Ordersumary/>
       <UserOperation/>
         </div>
+       </EmployeContextProvider>
     )
 }
 

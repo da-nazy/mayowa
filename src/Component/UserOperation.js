@@ -7,12 +7,12 @@ import Whatyoudo from "./Whatyoudo";
 import Chooseyourplan from "./Chooseyourplan";
 import {makeStyles} from '@mui/material'
 import {Route,Routes,useRouteMatch,Switch} from 'react-router-dom';
-
+import {FaArrowLeft} from 'react-icons/fa';
 //<Whatyoudo/>
   
 
 function UserOperation() {
-  const steps = ["", "", ""];
+  const steps = ["", "", "",""];
   const  [currentStep,setCurrentStep] = useState(0);
   const [toggleScreen,setToggleScreen]=useState(true);
 
@@ -37,9 +37,12 @@ if(toggleScreen){
 }
   return (
     
-    <div style={{width: "55%" }}>
-      <div style={{paddingTop:40}}>
-        <Box sx={{ width: "50%",margin:'0 auto'}}>
+    <div style={{width: "55%"  }}>
+      <div style={{display:'flex',flexDirection:'row'}}>
+        {currentStep===1?<div onClick={()=>setStep(0)} style={{ paddingTop:40,display:'flex',flexDirection:'row',width:'20%',justifyContent:'center'}}><i style={{color:'#BF1559'}}><FaArrowLeft/> </i><h5 style={{margin:0,color:'#BF1559',paddingLeft:5}}>Back</h5></div>
+      :null}
+       <div style={{paddingTop:40,width:'80%',margin:'0 auto'}}>
+        <Box sx={{ width: "80%",margin:'0 auto'}}>
           <Stepper activeStep={currentStep} sx={{iconColor:'red'}}>
             {steps.map((label) => (
               <Step key={label} sx={{iconColor:'red'}}>
@@ -49,7 +52,10 @@ if(toggleScreen){
           </Stepper>
         </Box>
       </div>
-        {choose()}
+      </div>
+     
+      {choose()}
+      
     </div>
    
     

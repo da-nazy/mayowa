@@ -1,0 +1,15 @@
+export const employeeReducer=(state,action)=>{
+    //console.log(action);
+    switch(action.type){
+        case 'ADD_EMPLOYE':
+               return(
+                 {...state,day:action.day,employementType:action.employementType,averageMonthRevanue:action.averageMonthRevanue}
+            )
+            
+            break;
+        case 'ADD_REPAYMENT':
+            return(
+                {...state,averageMonthlyRevenue:action.averageMonthlyRevanue}
+            )
+    }
+}
