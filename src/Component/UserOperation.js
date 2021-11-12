@@ -1,11 +1,15 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
+import {
+  Stepper,
+  Step,
+  StepLabel,
+  StepButton,
+  makeStyles
+} from "@material-ui/core";
 import Whatyoudo from "./Whatyoudo";
 import Chooseyourplan from "./Chooseyourplan";
-import {makeStyles} from '@mui/material'
+
 import {Route,Routes,useRouteMatch,Switch} from 'react-router-dom';
 import {FaArrowLeft} from 'react-icons/fa';
 //<Whatyoudo/>
@@ -35,6 +39,18 @@ if(toggleScreen){
   )
 }
 }
+const useStyles = makeStyles(() => ({
+  root: {
+    "& .MuiStepIcon-active": { color: "red" },
+    "& .MuiStepIcon-completed": { color: "red" },
+    '&$active': {
+      color: '#000000',
+  },
+    //"& .Mui-disabled .MuiStepIcon-root": { color: "cyan" }
+  }
+}));
+
+const c = useStyles();
   return (
     
     <div style={{width: "55%"  }}>
@@ -43,7 +59,7 @@ if(toggleScreen){
       :null}
        <div style={{paddingTop:40,width:'80%',margin:'0 auto'}}>
         <Box sx={{ width: "80%",margin:'0 auto'}}>
-          <Stepper activeStep={currentStep} sx={{iconColor:'red'}}>
+          <Stepper activeStep={currentStep} sx={{iconColor:'red'}} className={c.root}>
             {steps.map((label) => (
               <Step key={label} sx={{iconColor:'red'}}>
                 <StepLabel>{label}</StepLabel>
