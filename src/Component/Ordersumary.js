@@ -25,7 +25,7 @@ function Ordersumary() {
                   return(
                     <div key={i} style={{display:'flex',flexDirection:'row',width:'80%',marginLeft:15,marginTop:10,marginBottom:10}}>
                     <div style={{border:'1px solid #E8E8E8',height:70,width:60,padding:5,borderRadius:5,boxShadow:' 0.5px 0.5px 0.5px 0.5px #E8E8E8',justifyContent:'center'}}>
-                        <img src={e.img} height={60} width={50} style={{margin:"auto"}}/>
+                        <img src={e.img} height={60} width={50} style={{margin:"auto"}} alt="background"/>
                     </div>
                     <div style={{marginLeft:15,display:'flex',flexDirection:'column',justifyContent:'center'}}>
                         <h6 style={{margin:3,color:'#8B8B8B',textAlign:'left',fontSize:12,letterSpacing:1}}>{e.name}</h6>
