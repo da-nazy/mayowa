@@ -10,7 +10,7 @@ import {
 import Whatyoudo from "./Whatyoudo";
 import Chooseyourplan from "./Chooseyourplan";
 
-import {Route,Routes,useRouteMatch,Switch} from 'react-router-dom';
+import {useRouteMatch} from 'react-router-dom';
 import {FaArrowLeft} from 'react-icons/fa';
 //<Whatyoudo/>
   
