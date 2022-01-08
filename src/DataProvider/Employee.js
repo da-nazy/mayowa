@@ -1,5 +1,5 @@
 import React,{useReducer,createContext} from 'react';
-import {employeeReducer} from './employeeReducer';
+import employeeReducer from './employeeReducer';
  export const  EmployeeContext=createContext();
 
 const EmployeContextProvider=({children})=>{

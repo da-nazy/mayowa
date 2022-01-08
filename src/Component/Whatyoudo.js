@@ -1,7 +1,7 @@
 
 import mayowa_wyd1 from '../Asset/Image/mayowa_wyd1.jpg';
 import mayow_wyd3 from '../Asset/Image/mayow_wyd3.jpg';
-import {useState,useRef,useContext,useEffect} from 'react';
+import {useState,useContext,useEffect} from 'react';
 import DatePicker from 'react-date-picker';
 import '../style/whatyoudo.css';
 import {FaCalendar,FaArrowDown} from 'react-icons/fa';

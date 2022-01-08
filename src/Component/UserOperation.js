@@ -40,8 +40,8 @@ if(toggleScreen){
 }
 const useStyles = makeStyles(() => ({
   root: {
-    "& .MuiStepIcon-active": { color: "red" },
-    "& .MuiStepIcon-completed": { color: "red" },
+    "& .MuiStepIcon-active": { color: "#EE6E92" },
+    "& .MuiStepIcon-completed": { color: "#BF1559" },//
     '&$active': {
       color: '#000000',
   },
