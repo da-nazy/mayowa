@@ -4,7 +4,6 @@ import {
   Stepper,
   Step,
   StepLabel,
-  StepButton,
   makeStyles
 } from "@material-ui/core";
 import Whatyoudo from "./Whatyoudo";

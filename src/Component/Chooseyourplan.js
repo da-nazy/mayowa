@@ -52,7 +52,6 @@ function Chooseyourplan({changeScreen,setStep}) {
 
       const inputCheck=()=>{
           var check=true;
-          var inputObject={};
        if(!appDetails.month){
            check=false;
        }

@@ -9,7 +9,7 @@ import  {EmployeeContext} from '../DataProvider/Employee';
 function Whatyoudo({changeScreen,setStep}) {
 
     const {employee,dispatch}=useContext(EmployeeContext);
-    const [empType,setEmpType]=useState(0);
+    
     const wyd=[{
          img:mayowa_wyd1,
          text:'Paid Employement',
@@ -44,7 +44,7 @@ const [selectedDate,setSelectedDate]=useState(null);
       const [existingLoan,setExistingLoan]=useState(false);
       const [noLoan,setNoLoan]=useState(false);
 
-      const calendarRef=useRef(null);
+    
       const handleClick = (e) => {
         e.preventDefault();
         setIsOpen(!isOpen);
@@ -108,9 +108,9 @@ const [selectedDate,setSelectedDate]=useState(null);
                  return(
                     <div onClick={()=>setAppDetails({...appDetails,employmentType:e.id})} key={i} style={{height:'90%',flexDirection:'column',width:'30%',justifyContent:'center',display:'flex',alignItems:'center'}}>
                     <div style={{border:'1px solid #fff',height:'80%',width:'80%',justifyContent:'center',display:'flex',borderRadius:10,boxShadow:" 0 0 20px #ccc"}}>
-                  <img src={e.img} height={'80%'} width={'80%'} style={{margin:'auto'}}/>  
+                  <img src={e.img} height={'80%'} width={'80%'} style={{margin:'auto'}} alt={e.text} />  
                 </div>
-                <h5 style={{margin:'0 auto',color:'#BF1559',marginTop:10,fontWeight:`${appDetails.employmentType==e.id?600:e.fnt}`}}>{e.text}</h5>
+                <h5 style={{margin:'0 auto',color:'#BF1559',marginTop:10,fontWeight:`${appDetails.employmentType===e.id?600:e.fnt}`}}>{e.text}</h5>
                 </div>
                  )
              })}
